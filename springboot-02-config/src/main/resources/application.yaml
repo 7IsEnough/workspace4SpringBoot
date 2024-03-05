@@ -34,6 +34,7 @@ person:
   birth: 2020/1/28
   maps: {k1: v1,k2: v2}
   hello: 常威
+  email: kobe bryant@163.com
   lists:
     - basketball
     - coach
@@ -41,3 +42,43 @@ person:
   dog:
     name: ${person.hello:hello}_旺财
     age: 3
+
+
+
+dog:
+  first-name: 阿黄
+  name: 旺财
+  age: 3
+
+
+
+# springBoot 的多环境配置，可以选择激活哪一个配置文件
+#spring:
+#  profiles:
+#    active: dev
+
+
+#spring:
+#  profiles:
+#    active: test
+
+
+server:
+  port: 8080
+spring:
+  profiles:
+    active: dev
+
+---
+server:
+  port: 8081
+
+
+spring:
+  profiles: test
+---
+server:
+  port: 8082
+
+spring:
+  profiles: dev

@@ -1,6 +1,7 @@
 package com.clarlove.pojo;
 
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
 
 /**
@@ -8,11 +9,14 @@ import org.springframework.stereotype.Component;
  * @date 2024/3/5 - 22:43
  */
 @Component
+@ConfigurationProperties(prefix = "dog")
 public class Dog {
 
   private String name;
 
   private Integer age;
+
+  private String firstName;
 
   public Dog() {
   }
@@ -20,6 +24,12 @@ public class Dog {
   public Dog(String name, Integer age) {
     this.name = name;
     this.age = age;
+  }
+
+  public Dog(String name, Integer age, String firstName) {
+    this.name = name;
+    this.age = age;
+    this.firstName = firstName;
   }
 
   public String getName() {
@@ -38,11 +48,20 @@ public class Dog {
     this.age = age;
   }
 
+  public String getFirstName() {
+    return firstName;
+  }
+
+  public void setFirstName(String firstName) {
+    this.firstName = firstName;
+  }
+
   @Override
   public String toString() {
     return "Dog{" +
         "name='" + name + '\'' +
         ", age=" + age +
+        ", firstName='" + firstName + '\'' +
         '}';
   }
 }

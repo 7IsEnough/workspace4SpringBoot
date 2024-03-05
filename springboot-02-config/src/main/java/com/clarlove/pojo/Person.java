@@ -3,10 +3,12 @@ package com.clarlove.pojo;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
+import javax.validation.constraints.Email;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Component;
+import org.springframework.validation.annotation.Validated;
 
 /**
  * @author promise
@@ -18,6 +20,7 @@ import org.springframework.stereotype.Component;
 // javaConfig 绑定我们配置文件的值，可以采取这些方式
 // 加载指定的配置文件
 //@PropertySource(value = "classpath:kobe.properties")
+@Validated // 数据校验
 public class Person {
 
   // SPEL表达式
@@ -26,6 +29,9 @@ public class Person {
   private Integer age;
   private Boolean happy;
   private Date birth;
+
+//  @Email(message = "邮箱格式错误")
+  private String email;
   private Map<String,Object> maps;
   private List<Object> lists;
   private Dog dog;
@@ -42,6 +48,14 @@ public class Person {
     this.maps = maps;
     this.lists = lists;
     this.dog = dog;
+  }
+
+  public String getEmail() {
+    return email;
+  }
+
+  public void setEmail(String email) {
+    this.email = email;
   }
 
   public String getName() {

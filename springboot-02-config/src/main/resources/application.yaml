@@ -82,3 +82,21 @@ server:
 
 spring:
   profiles: dev
+
+
+
+# 注解讲解
+# @Configuration 表示这是一个配置类
+# @EnableConfigurationProperties(HttpProperties) 自动配置属性  HttpProperties
+
+
+# Spring的底层注解：根据不同的条件，米判断当前置域者类是否生效！
+# @ConditionalOnWebApplication(type ConditionalOnWebApplication.Type.SERVLET)  类型不是一个web应用，直接失效
+# @ConditionalOnClass(CharacterEncodingFilter.class)  是否存在CharacterEncodingFilter
+# @ConditionalOnProperty(prefix "spring.http.encoding",value = "enabled", matchIfMissing = true)  是否不存在 spring.http.encoding的配置
+
+
+# 在我们这配置文件中能配置的东西，都存在一个固有的规律     xxxAutoConfiguration：有默认值   xxxProperties  和配置文件绑定，就可以使用自定义的配置
+
+# 可以通过 debug=true 来查看，哪些自动配置类生效，哪些没有生效
+# debug: true

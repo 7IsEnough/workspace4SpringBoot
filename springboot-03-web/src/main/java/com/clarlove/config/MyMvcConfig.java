@@ -3,6 +3,7 @@ package com.clarlove.config;
 import java.util.Locale;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.servlet.LocaleResolver;
 import org.springframework.web.servlet.View;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
@@ -23,6 +24,12 @@ public class MyMvcConfig implements WebMvcConfigurer {
   public void addViewControllers(ViewControllerRegistry registry) {
     registry.addViewController("/kobe").setViewName("test");
 
+  }
+
+  // 自定义的国际化组件
+  @Bean(value = "localeResolver")
+  public LocaleResolver MyLocaleResolver() {
+    return new MyLocaleResolver();
   }
 
   // public interface viewResolver 实现了视图解析器接口的类，我们就可以把它看做视图解析器

@@ -4,3 +4,27 @@ spring:
     password: 1234
     url: jdbc:mysql://localhost:3306/mybatis?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
     driver-class-name: com.mysql.cj.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+
+
+
+    #Spring Boot默认是不注入这些属性值的，需要白己绑定
+    #druid数据源专有置
+    initialsize: 5
+    minIdle: 5
+    maxActive: 20
+    maxWait: 60000
+    timeBetweenEvictionRunsMillis: 60000
+    minEvictableIdleTimeMillis: 300000
+    validationQuery: SELECT 1 FROM DUAL
+    testWhileIdle: true
+    testOnBorrow: false
+    testOnReturn: false
+    poolPreparedStatements: true
+    #配置监控统计拦截的filters,stat:监控统计、Log4j:日志记录、waLL：防御sqL注入
+    #如果允许时报错java.Lang.CLassNotFoundException:org.apache.Log4j.Priority
+    #则导入Log4j依赖即可，Maven地l:https://mvnrepository.com/artifact./儿og4j/儿og4j
+    filters: stat,wall,log4j
+    maxPoolPreparedStatementPerConnectionSize: 20
+    useGlobalDataSourceStat: true
+    connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=500

@@ -1,8 +1,11 @@
 package com.clearlove.config;
 
 import java.util.ArrayList;
+import org.springframework.context.EnvironmentAware;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.env.Environment;
+import org.springframework.core.env.Profiles;
 import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
 import springfox.documentation.service.ApiInfo;
@@ -19,12 +22,40 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @EnableSwagger2 // 开启swagger2
 public class SwaggerConfig {
 
-  // 配置了Swagger 的Docket 的bean实例
+
   @Bean
-  public Docket docket() {
+  public Docket docket1() {
+    return new Docket(DocumentationType.SWAGGER_2).groupName("A");
+  }
+
+  @Bean
+  public Docket docket2() {
+    return new Docket(DocumentationType.SWAGGER_2).groupName("B");
+  }
+
+  @Bean
+  public Docket docket3() {
+    return new Docket(DocumentationType.SWAGGER_2).groupName("C");
+  }
+
+
+
+  // 配置了Swagger 的Docket 的bean实例
+  // enable是否启动swagger，如果为false，则swagger不能在浏览器中访问
+  @Bean
+  public Docket docket(Environment env) {
+
+    //设置要显示的Swagger环境
+    Profiles profiles = Profiles.of("dev","test");
+
+    //通过environment,acceptsProfiles判断是否处在自己设定的环境当中
+    boolean flag = env.acceptsProfiles(profiles);
+
+
     return new Docket(DocumentationType.SWAGGER_2)
         .apiInfo(apiInfo())
-        .enable(false)
+        .groupName("kobe")
+        .enable(true)
         .select()
         // RequestHandlerSelectors 配置要扫描接口的方式
         // basePackage  指定要扫描的包

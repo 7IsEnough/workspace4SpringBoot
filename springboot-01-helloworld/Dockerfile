@@ -11,6 +11,9 @@ COPY ./app.jar /project/app.jar
 
 # 配置环境变量和jdk的安装目录
 ENV JAVA_DIR=/usr/local
+
+COPY ./jdk-8u152-linux-x64.tar.gz $JAVA_DIR
+
 # 安装jdk
 # \ 就是换到下一行输入，对实际命令没有任何影响，只是为了方便观看
 RUN cd $JAVA_DIR \

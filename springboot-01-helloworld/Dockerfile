@@ -8,7 +8,7 @@ RUN mkdir -p /project
 WORKDIR /project
 # 复制文件或目录到镜像中。可以将本地文件或目录复制到镜像的指定位置。
 COPY ./app.jar /project/app.jar
-COPY ./arthas.jar /arthas.jar
+COPY ./arthas-boot.jar /arthas-boot.jar
 
 # 配置环境变量和jdk的安装目录
 ENV JAVA_DIR=/usr/local

@@ -64,7 +64,7 @@
         <version>${spring-boot.version}</version>
         <configuration>
           <mainClass>com.clarlove.Springboot01HelloworldApplication</mainClass>
-          <skip>true</skip>
+          <layout>JAR</layout>
         </configuration>
         <executions>
           <execution>

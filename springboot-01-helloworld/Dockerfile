@@ -11,7 +11,7 @@ COPY ./app.jar /project/app.jar
 COPY ./arthas-boot.jar /arthas-boot.jar
 
 # 配置环境变量和jdk的安装目录
-ENV JAVA_DIR=/usr/local
+# ENV JAVA_DIR=/usr/local
 
 # COPY ./jdk-8u152-linux-x64.tar.gz $JAVA_DIR
 

@@ -37,7 +37,7 @@ ENV JAVA_OPTS="-Xms512m -Xmx1024m"
 ENV ARGS=""
 
 # 定义容器启动后执行的命令,启动后端项目
-CMD java ${JAVA_OPTS} -jar app.jar $ARGS
+CMD java ${JAVA_OPTS} -jar /project/app.jar $ARGS
 
 # 暴露端口 8081 --！！！容器内部端口
 EXPOSE 8081

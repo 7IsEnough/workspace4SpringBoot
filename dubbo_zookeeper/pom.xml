@@ -55,7 +55,6 @@
                 <version>${spring-boot.version}</version>
                 <configuration>
                     <mainClass>com.clearlove.DubboZookeeperApplication</mainClass>
-                    <skip>true</skip>
                 </configuration>
                 <executions>
                     <execution>

@@ -19,8 +19,9 @@ public class TestController {
   TicketServer ticketServer;
 
   @GetMapping("/test")
-  public void buyTicket() {
+  public String buyTicket() {
     String ticket = ticketServer.getTicket();
     System.out.println("在注册中心拿到：" + ticket);
+    return "在注册中心拿到：" + ticket;
   }
 }
